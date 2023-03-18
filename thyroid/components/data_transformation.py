@@ -54,7 +54,7 @@ class DataTransformation:
                         'hypopituitary',
                         'psych']),
         
-                    ('onehot', OneHotEncoder(), ['sex']),
+                    ('onehot', OneHotEncoder(categories='auto', drop='first', sparse=False, handle_unknown='ignore'), ['sex']),
                     ('imputer_scaler', make_pipeline(KNNImputer(), MinMaxScaler()), ['age', 'TSH', 'T3', 'TT4', 'T4U', 'FTI'])
                     ],remainder='passthrough')
 
@@ -82,11 +82,17 @@ class DataTransformation:
             input_feature_train_arr=transformer.fit_transform(input_feature_train_df)
             # input_feature_train_arr = transformer.transform(input_feature_train_df)
             input_feature_test_arr = transformer.transform(input_feature_test_df)
+            print(len(input_feature_train_arr[0]))
+            print(len(input_feature_test_arr[0]))
 
+    
+                
+            # input_feature_test_arr=np.delete(input_feature_test_arr,15,axis=1)
+            # input_feature_train_arr=np.delete(input_feature_train_arr,15,axis=1)
+            
 
-
-
-
+            print(len(input_feature_train_arr[0]))
+            print(len(input_feature_test_arr[0]))
 
             #selecting target feature for train and test dataframe
             target_feature_train_df = train_df[TARGET_COLUMN]

@@ -71,7 +71,9 @@ class ModelEvaluation:
             # accuracy using previous trained model
             
             input_feature_name = list(transformer.feature_names_in_)
+            print(transformer.feature_names_in_)
             input_arr =transformer.transform(test_df[input_feature_name])
+            print(len(input_arr[0]))
             y_pred = model.predict(input_arr)
             # print(f"Prediction using previous model: {target_encoder.inverse_transform(y_pred[:int(5)])}")
             previous_model_score = accuracy_score(y_true=y_true, y_pred=y_pred)

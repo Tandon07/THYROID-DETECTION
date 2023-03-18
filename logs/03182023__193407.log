@@ -1,0 +1,50 @@
+[ 2023-03-18 19:34:11,664 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 19:34:11,665 ] 23 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-03-18 19:34:11,665 ] 21 root - INFO - Reading data from database: ThyroidF and collection: Thyroid Project
+[ 2023-03-18 19:34:12,599 ] 23 root - INFO - Found columns: Index(['_id', '29', 'F', 'f', 'f.1', 'f.2', 'f.3', 'f.4', 'f.5', 'f.6', 't',
+       'f.7', 'f.8', 'f.9', 'f.10', 'f.11', 'f.12', 't.1', '0.3', 'f.13', '?',
+       'f.14', '?.1', 'f.15', '?.2', 'f.16', '?.3', 'f.17', '?.4', 'other',
+       '-[840801013]'],
+      dtype='object')
+[ 2023-03-18 19:34:12,601 ] 25 root - INFO - Dropping column: _id 
+[ 2023-03-18 19:34:12,647 ] 27 root - INFO - Row and columns in df: (18342, 30)
+[ 2023-03-18 19:34:12,647 ] 30 root - INFO - collected the data with no column name
+[ 2023-03-18 19:34:12,648 ] 33 root - INFO - column 'other' is of no use so just dropping it
+[ 2023-03-18 19:34:12,678 ] 36 root - INFO - adding column names
+[ 2023-03-18 19:34:12,680 ] 40 root - INFO - getting splitted val of Target column
+[ 2023-03-18 19:34:12,879 ] 50 root - INFO - dropping featuree that are not useful 
+[ 2023-03-18 19:34:12,909 ] 57 root - INFO - Saving df to dataset folder
+[ 2023-03-18 19:34:13,258 ] 87 root - INFO - Data ingestion artifact: DataIngestionArtifact(dataset_file_path='/config/workspace/artifact/03182023__193411/data_ingestion/dataset/thyroiddataset.csv')
+[ 2023-03-18 19:34:13,270 ] 22 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 19:34:13,271 ] 62 root - INFO - Reading base dataframe
+[ 2023-03-18 19:34:13,472 ] 65 root - INFO - Replace na value in base df
+[ 2023-03-18 19:34:13,472 ] 70 root - INFO - Reading dataframe
+[ 2023-03-18 19:34:13,516 ] 90 root - INFO - Splitting test and train and saving to datasplit folder
+[ 2023-03-18 19:34:13,516 ] 96 root - INFO - Write reprt in yaml file
+[ 2023-03-18 19:34:13,687 ] 106 root - INFO - Data validation artifact: DataValidationArtifact(report_file_path='/config/workspace/artifact/03182023__193411/data_validation/report.yaml', train_file_path='/config/workspace/artifact/03182023__193411/data_validation/datasetsplit/train.csv', test_file_path='/config/workspace/artifact/03182023__193411/data_validation/datasetsplit/test.csv')
+[ 2023-03-18 19:34:13,691 ] 29 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Transformation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 19:34:20,621 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 19:34:20,635 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 19:34:20,636 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 19:34:20,638 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 19:34:20,639 ] 148 root - INFO - Data transformation object DataTransformationArtifact(transform_object_path='/config/workspace/artifact/03182023__193411/data_transformation/transformer/transformer.pkl', transformed_train_path='/config/workspace/artifact/03182023__193411/data_transformation/transformed/train.npz', transformed_test_path='/config/workspace/artifact/03182023__193411/data_transformation/transformed/test.npz', target_encoder_path='/config/workspace/artifact/03182023__193411/data_transformation/target_encoder/target_encoder.pkl')
+[ 2023-03-18 19:34:20,642 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Model Trainer <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 19:34:20,642 ] 46 root - INFO - Loading train and test array.
+[ 2023-03-18 19:34:20,661 ] 50 root - INFO - Splitting input and target feature from both train and test arr.
+[ 2023-03-18 19:34:20,662 ] 54 root - INFO - Train the model
+[ 2023-03-18 19:34:20,722 ] 57 root - INFO - Calculating f1 train score
+[ 2023-03-18 19:34:20,731 ] 61 root - INFO - Calculating f1 test score
+[ 2023-03-18 19:34:20,735 ] 65 root - INFO - train score:0.88447752963882 and tests score 0.8759647188533627
+[ 2023-03-18 19:34:20,736 ] 67 root - INFO - Checking if our model is underfitting or not
+[ 2023-03-18 19:34:20,736 ] 72 root - INFO - Checking if our model is overfiiting or not
+[ 2023-03-18 19:34:20,736 ] 79 root - INFO - Saving mode object
+[ 2023-03-18 19:34:20,736 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 19:34:20,740 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 19:34:20,740 ] 83 root - INFO - Prepare the artifact
+[ 2023-03-18 19:34:20,741 ] 86 root - INFO - Model trainer artifact: ModelTrainerArtifact(model_path='/config/workspace/artifact/03182023__193411/model_trainer/model/model.pkl', accuracy_train=0.88447752963882, accuracy_test=0.8759647188533627)
+[ 2023-03-18 19:34:20,741 ] 20 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Model Evaluation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 19:34:20,741 ] 36 root - INFO - if saved model folder has model the we will compare which model is best trained or the model from saved model folder
+[ 2023-03-18 19:34:20,741 ] 47 root - INFO - Finding location of transformer model and target encoder
+[ 2023-03-18 19:34:20,742 ] 52 root - INFO - Previous trained objects of transformer, model and target encoder
+[ 2023-03-18 19:34:20,744 ] 60 root - INFO - Currently trained model objects
+[ 2023-03-18 19:34:22,453 ] 78 root - INFO - Accuracy using previous trained model: 0.8759647188533627

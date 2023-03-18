@@ -25,20 +25,19 @@
 # #      print(f"{idx}: {record}")
 
 
-
-# from thyroid.logger import logging
-# from thyroid.exception import ThyroidException
-# from thyroid.utils import get_collection_as_dataframe
-# import sys,os
-# from thyroid.entity import config_entity
-# from thyroid.components.data_ingestion import DataIngestion
-# from thyroid.components.data_validation import DataValidation
-# # from sensor.components.data_validation import DataValidation
-# from thyroid.components.data_transformation import DataTransformation
-# from thyroid.components.model_trainer import ModelTrainer
-# from thyroid.components.model_evaluation import ModelEvaluation
-# from thyroid.components.model_pusher import ModelPusher
-
+from thyroid.logger import logging
+from thyroid.exception import ThyroidException
+from thyroid.utils import get_collection_as_dataframe
+import sys,os
+from thyroid.entity import config_entity
+from thyroid.components.data_ingestion import DataIngestion
+from thyroid.components.data_validation import DataValidation
+# from sensor.components.data_validation import DataValidation
+from thyroid.components.data_transformation import DataTransformation
+from thyroid.components.model_trainer import ModelTrainer
+from thyroid.components.model_evaluation import ModelEvaluation
+from thyroid.components.model_pusher import ModelPusher
+from thyroid.config import feature_cols,feature_index
 
 # if __name__=="__main__":
 #     try:
@@ -56,7 +55,6 @@
 #                         data_ingestion_artifact=data_ingestion_artifact)
 
 #         data_validation_artifact = data_validation.initiate_data_validation()
-
 
 
 # #dataValidation
@@ -80,13 +78,11 @@
 #         data_transformation_artifact=data_transformation_artifact,
 #         model_trainer_artifact=model_trainer_artifact)
 #         model_eval_artifact = model_eval.initiate_model_evaluation()
-        
-
 
 
 #         #model pusher
 #         model_pusher_config = config_entity.ModelPusherConfig(training_pipeline_config)
-        
+
 #         model_pusher = ModelPusher(model_pusher_config=model_pusher_config, 
 #                 data_transformation_artifact=data_transformation_artifact,
 #                 model_trainer_artifact=model_trainer_artifact)
@@ -96,9 +92,8 @@
 #         raise ThyroidException(e, sys)
 
 
-
 from flask import Flask, request, render_template
-import pickle
+# import pickle
 import pandas as pd
 from thyroid.utils import load_object
 from thyroid.predictor import ModelResolver
@@ -109,15 +104,19 @@ transformer = load_object(file_path=model_resolver.get_latest_transformer_path()
 model = load_object(file_path=model_resolver.get_latest_model_path())
 target_encoder = load_object(file_path=model_resolver.get_latest_target_encoder_path())
 
+print(transformer.feature_names_in_)
+input_feature_name = list(transformer.feature_names_in_)
+
+
 app = Flask(__name__)
+
 
 # Define a route to handle incoming requests from users
 @app.route('/predict', methods=['POST'])
 def predict():
     # Get the input data from the HTML form
     input_data = {
-        'age': float(request.form['age']),
-        'sex': request.form['sex'],
+
         'on_thyroxine': request.form['on_thyroxine'],
         'query_on_thyroxine': request.form['query_on_thyroxine'],
         'on_antithyroid_medication': request.form['on_antithyroid_medication'],
@@ -132,23 +131,25 @@ def predict():
         'tumor': request.form['tumor'],
         'hypopituitary': request.form['hypopituitary'],
         'psych': request.form['psych'],
+        'sex': request.form['sex'],
+        'age': float(request.form['age']),
         'TSH': float(request.form['TSH']),
         'T3': float(request.form['T3']),
         'TT4': float(request.form['TT4']),
         'T4U': float(request.form['T4U']),
         'FTI': float(request.form['FTI'])
     }
-    
+
     # Transform the input data using the target encoder and transformer
-    input_df = pd.DataFrame(input_data, index=[0])
-                                 # transformed_data = target_encoder.transform(input_df)
-    transformed_data = transformer.transform(transformed_data)
-    
+    input_df = pd.DataFrame(input_data,index=[0])
+    # transformed_data = target_encoder.transform(input_df)
+
+    transformed_data = transformer.transform(input_df[input_feature_name])
+
+
     # Use the transformed data as input to the model and get the predicted output
     prediction = model.predict(transformed_data)
-    cat_prediction = target_encoder.inverse_transform(prediction)
-
-
+    cat_prediction = target_encoder.inverse_transform(prediction.astype(int))
 
     # Assign the corresponding category based on the predicted output
     if cat_prediction in ['A', 'B', 'C', 'D']:
@@ -164,17 +165,17 @@ def predict():
     elif cat_prediction == 'R':
         category = 'discordant results'
     else:
-        category = 'unknown'
+        category = 'Not Suffering with Thyroidal Disease'
 
-
-# Render the predicted category on the HTML template
+    # Render the predicted category on the HTML template
     return render_template('result.html', category=category)
+
 
 @app.route('/')
 def form():
     return render_template('form.html')
 
+
 if __name__ == '__main__':
     name = 'Flask app'
-    app.run(debug=True,port=5600)
-
+    app.run(debug=True, port=5610)
