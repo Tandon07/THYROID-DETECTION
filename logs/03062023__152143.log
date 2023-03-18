@@ -1,0 +1,31 @@
+[ 2023-03-06 15:21:44,670 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-06 15:21:44,670 ] 23 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-03-06 15:21:44,671 ] 21 root - INFO - Reading data from database: ThyroidF and collection: Thyroid Project
+[ 2023-03-06 15:21:45,244 ] 23 root - INFO - Found columns: Index(['_id', '29', 'F', 'f', 'f.1', 'f.2', 'f.3', 'f.4', 'f.5', 'f.6', 't',
+       'f.7', 'f.8', 'f.9', 'f.10', 'f.11', 'f.12', 't.1', '0.3', 'f.13', '?',
+       'f.14', '?.1', 'f.15', '?.2', 'f.16', '?.3', 'f.17', '?.4', 'other',
+       '-[840801013]'],
+      dtype='object')
+[ 2023-03-06 15:21:45,245 ] 25 root - INFO - Dropping column: _id 
+[ 2023-03-06 15:21:45,256 ] 27 root - INFO - Row and columns in df: (18342, 30)
+[ 2023-03-06 15:21:45,256 ] 30 root - INFO - collected the data with no column name
+[ 2023-03-06 15:21:45,256 ] 33 root - INFO - column 'other' is of no use so just dropping it
+[ 2023-03-06 15:21:45,265 ] 36 root - INFO - adding column names
+[ 2023-03-06 15:21:45,266 ] 40 root - INFO - getting splitted val of Target column
+[ 2023-03-06 15:21:45,338 ] 50 root - INFO - dropping featuree that are not useful 
+[ 2023-03-06 15:21:45,348 ] 57 root - INFO - Saving df to dataset folder
+[ 2023-03-06 15:21:45,460 ] 87 root - INFO - Data ingestion artifact: DataIngestionArtifact(dataset_file_path='/config/workspace/artifact/03062023__152144/data_ingestion/dataset/thyroiddataset.csv')
+[ 2023-03-06 15:21:45,461 ] 22 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-06 15:21:45,461 ] 62 root - INFO - Reading base dataframe
+[ 2023-03-06 15:21:45,536 ] 65 root - INFO - Replace na value in base df
+[ 2023-03-06 15:21:45,536 ] 67 root - INFO - Drop null values colums from base df
+[ 2023-03-06 15:21:45,582 ] 44 root - INFO - selecting column name which contains null above to 0.2
+[ 2023-03-06 15:21:45,583 ] 47 root - INFO - Columns to drop: ['T3', 'TBG']
+[ 2023-03-06 15:21:45,588 ] 70 root - INFO - Reading dataframe
+[ 2023-03-06 15:21:45,607 ] 74 root - INFO - Drop null values colums df
+[ 2023-03-06 15:21:45,630 ] 44 root - INFO - selecting column name which contains null above to 0.2
+[ 2023-03-06 15:21:45,630 ] 47 root - INFO - Columns to drop: ['T3']
+[ 2023-03-06 15:21:45,632 ] 83 root - INFO - encoding M-->1 and F--> 0
+[ 2023-03-06 15:21:45,641 ] 90 root - INFO - Splitting test and train and saving to datasplit folder
+[ 2023-03-06 15:21:45,641 ] 96 root - INFO - Write reprt in yaml file
+[ 2023-03-06 15:21:45,713 ] 106 root - INFO - Data validation artifact: DataValidationArtifact(report_file_path='/config/workspace/artifact/03062023__152144/data_validation/report.yaml', train_file_path='/config/workspace/artifact/03062023__152144/data_validation/datasetsplit/train.csv', test_file_path='/config/workspace/artifact/03062023__152144/data_validation/datasetsplit/test.csv')

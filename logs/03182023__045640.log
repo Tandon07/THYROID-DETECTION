@@ -1,0 +1,25 @@
+[ 2023-03-18 04:56:41,273 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 04:56:41,273 ] 23 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-03-18 04:56:41,274 ] 21 root - INFO - Reading data from database: ThyroidF and collection: Thyroid Project
+[ 2023-03-18 04:56:41,841 ] 23 root - INFO - Found columns: Index(['_id', '29', 'F', 'f', 'f.1', 'f.2', 'f.3', 'f.4', 'f.5', 'f.6', 't',
+       'f.7', 'f.8', 'f.9', 'f.10', 'f.11', 'f.12', 't.1', '0.3', 'f.13', '?',
+       'f.14', '?.1', 'f.15', '?.2', 'f.16', '?.3', 'f.17', '?.4', 'other',
+       '-[840801013]'],
+      dtype='object')
+[ 2023-03-18 04:56:41,842 ] 25 root - INFO - Dropping column: _id 
+[ 2023-03-18 04:56:41,853 ] 27 root - INFO - Row and columns in df: (18342, 30)
+[ 2023-03-18 04:56:41,853 ] 30 root - INFO - collected the data with no column name
+[ 2023-03-18 04:56:41,853 ] 33 root - INFO - column 'other' is of no use so just dropping it
+[ 2023-03-18 04:56:41,862 ] 36 root - INFO - adding column names
+[ 2023-03-18 04:56:41,863 ] 40 root - INFO - getting splitted val of Target column
+[ 2023-03-18 04:56:41,931 ] 50 root - INFO - dropping featuree that are not useful 
+[ 2023-03-18 04:56:41,941 ] 57 root - INFO - Saving df to dataset folder
+[ 2023-03-18 04:56:42,048 ] 87 root - INFO - Data ingestion artifact: DataIngestionArtifact(dataset_file_path='/config/workspace/artifact/03182023__045641/data_ingestion/dataset/thyroiddataset.csv')
+[ 2023-03-18 04:56:42,049 ] 22 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 04:56:42,049 ] 62 root - INFO - Reading base dataframe
+[ 2023-03-18 04:56:42,119 ] 65 root - INFO - Replace na value in base df
+[ 2023-03-18 04:56:42,119 ] 70 root - INFO - Reading dataframe
+[ 2023-03-18 04:56:42,135 ] 90 root - INFO - Splitting test and train and saving to datasplit folder
+[ 2023-03-18 04:56:42,135 ] 96 root - INFO - Write reprt in yaml file
+[ 2023-03-18 04:56:42,209 ] 106 root - INFO - Data validation artifact: DataValidationArtifact(report_file_path='/config/workspace/artifact/03182023__045641/data_validation/report.yaml', train_file_path='/config/workspace/artifact/03182023__045641/data_validation/datasetsplit/train.csv', test_file_path='/config/workspace/artifact/03182023__045641/data_validation/datasetsplit/test.csv')
+[ 2023-03-18 04:56:42,211 ] 29 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Transformation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

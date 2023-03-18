@@ -1,0 +1,64 @@
+[ 2023-03-18 13:54:01,415 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:01,416 ] 23 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-03-18 13:54:01,416 ] 21 root - INFO - Reading data from database: ThyroidF and collection: Thyroid Project
+[ 2023-03-18 13:54:01,912 ] 23 root - INFO - Found columns: Index(['_id', '29', 'F', 'f', 'f.1', 'f.2', 'f.3', 'f.4', 'f.5', 'f.6', 't',
+       'f.7', 'f.8', 'f.9', 'f.10', 'f.11', 'f.12', 't.1', '0.3', 'f.13', '?',
+       'f.14', '?.1', 'f.15', '?.2', 'f.16', '?.3', 'f.17', '?.4', 'other',
+       '-[840801013]'],
+      dtype='object')
+[ 2023-03-18 13:54:01,912 ] 25 root - INFO - Dropping column: _id 
+[ 2023-03-18 13:54:01,923 ] 27 root - INFO - Row and columns in df: (18342, 30)
+[ 2023-03-18 13:54:01,923 ] 30 root - INFO - collected the data with no column name
+[ 2023-03-18 13:54:01,923 ] 33 root - INFO - column 'other' is of no use so just dropping it
+[ 2023-03-18 13:54:01,932 ] 36 root - INFO - adding column names
+[ 2023-03-18 13:54:01,933 ] 40 root - INFO - getting splitted val of Target column
+[ 2023-03-18 13:54:02,001 ] 50 root - INFO - dropping featuree that are not useful 
+[ 2023-03-18 13:54:02,010 ] 57 root - INFO - Saving df to dataset folder
+[ 2023-03-18 13:54:02,132 ] 87 root - INFO - Data ingestion artifact: DataIngestionArtifact(dataset_file_path='/config/workspace/artifact/03182023__135401/data_ingestion/dataset/thyroiddataset.csv')
+[ 2023-03-18 13:54:02,133 ] 22 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:02,133 ] 62 root - INFO - Reading base dataframe
+[ 2023-03-18 13:54:02,206 ] 65 root - INFO - Replace na value in base df
+[ 2023-03-18 13:54:02,206 ] 70 root - INFO - Reading dataframe
+[ 2023-03-18 13:54:02,222 ] 90 root - INFO - Splitting test and train and saving to datasplit folder
+[ 2023-03-18 13:54:02,222 ] 96 root - INFO - Write reprt in yaml file
+[ 2023-03-18 13:54:02,298 ] 106 root - INFO - Data validation artifact: DataValidationArtifact(report_file_path='/config/workspace/artifact/03182023__135401/data_validation/report.yaml', train_file_path='/config/workspace/artifact/03182023__135401/data_validation/datasetsplit/train.csv', test_file_path='/config/workspace/artifact/03182023__135401/data_validation/datasetsplit/test.csv')
+[ 2023-03-18 13:54:02,301 ] 29 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Transformation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:04,130 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,135 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,135 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,136 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,136 ] 143 root - INFO - Data transformation object DataTransformationArtifact(transform_object_path='/config/workspace/artifact/03182023__135401/data_transformation/transformer/transformer.pkl', transformed_train_path='/config/workspace/artifact/03182023__135401/data_transformation/transformed/train.npz', transformed_test_path='/config/workspace/artifact/03182023__135401/data_transformation/transformed/test.npz', target_encoder_path='/config/workspace/artifact/03182023__135401/data_transformation/target_encoder/target_encoder.pkl')
+[ 2023-03-18 13:54:04,137 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Model Trainer <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:04,137 ] 46 root - INFO - Loading train and test array.
+[ 2023-03-18 13:54:04,143 ] 50 root - INFO - Splitting input and target feature from both train and test arr.
+[ 2023-03-18 13:54:04,143 ] 54 root - INFO - Train the model
+[ 2023-03-18 13:54:04,160 ] 57 root - INFO - Calculating f1 train score
+[ 2023-03-18 13:54:04,162 ] 61 root - INFO - Calculating f1 test score
+[ 2023-03-18 13:54:04,163 ] 65 root - INFO - train score:0.862972153294734 and tests score 0.8478500551267916
+[ 2023-03-18 13:54:04,164 ] 67 root - INFO - Checking if our model is underfitting or not
+[ 2023-03-18 13:54:04,164 ] 72 root - INFO - Checking if our model is overfiiting or not
+[ 2023-03-18 13:54:04,164 ] 79 root - INFO - Saving mode object
+[ 2023-03-18 13:54:04,164 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,165 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,165 ] 83 root - INFO - Prepare the artifact
+[ 2023-03-18 13:54:04,166 ] 86 root - INFO - Model trainer artifact: ModelTrainerArtifact(model_path='/config/workspace/artifact/03182023__135401/model_trainer/model/model.pkl', accuracy_train=0.862972153294734, accuracy_test=0.8478500551267916)
+[ 2023-03-18 13:54:04,166 ] 19 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Model Evaluation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:04,166 ] 35 root - INFO - if saved model folder has model the we will compare which model is best trained or the model from saved model folder
+[ 2023-03-18 13:54:04,166 ] 41 root - INFO - Model evaluation artifact: ModelEvaluationArtifact(is_model_accepted=True, improved_accuracy=None)
+[ 2023-03-18 13:54:04,166 ] 14 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Transformation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-03-18 13:54:04,166 ] 25 root - INFO - Loading transformer model and target encoder
+[ 2023-03-18 13:54:04,167 ] 31 root - INFO - Saving model into model pusher directory
+[ 2023-03-18 13:54:04,167 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,172 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,172 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,173 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,173 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,174 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,174 ] 38 root - INFO - Saving model in saved model dir
+[ 2023-03-18 13:54:04,174 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,179 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,179 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,181 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,181 ] 48 root - INFO - Entered the save_object method of utils
+[ 2023-03-18 13:54:04,181 ] 52 root - INFO - Exited the save_object method of utils
+[ 2023-03-18 13:54:04,181 ] 49 root - INFO - Model pusher artifact: ModelPusherArtifact(pusher_model_dir='/config/workspace/artifact/03182023__135401/model_pusher/saved_models', saved_model_dir='saved_models')

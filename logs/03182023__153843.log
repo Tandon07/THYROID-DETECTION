@@ -1,0 +1,9 @@
+[ 2023-03-18 15:38:45,245 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-03-18 15:38:45,246 ] 224 werkzeug - INFO -  * Debugger PIN: 140-967-603
+[ 2023-03-18 15:38:45,291 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-03-18 15:38:45,292 ] 224 werkzeug - INFO -  * Debugger PIN: 140-967-603
+[ 2023-03-18 15:38:45,487 ] 224 werkzeug - WARNING -  * Debugger is active!
+[ 2023-03-18 15:38:45,489 ] 224 werkzeug - INFO -  * Debugger PIN: 140-967-603
+[ 2023-03-18 15:39:42,566 ] 224 werkzeug - INFO -  * Detected change in '/config/workspace/main.py', reloading
+[ 2023-03-18 15:39:42,904 ] 224 werkzeug - INFO -  * Detected change in '/config/workspace/main.py', reloading
+[ 2023-03-18 15:39:43,056 ] 224 werkzeug - INFO -  * Detected change in '/config/workspace/main.py', reloading

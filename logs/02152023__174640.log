@@ -1,0 +1,17 @@
+[ 2023-02-15 17:46:42,185 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-02-15 17:46:42,185 ] 23 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-02-15 17:46:42,185 ] 21 root - INFO - Reading data from database: ThyroidF and collection: Thyroid Project
+[ 2023-02-15 17:46:42,743 ] 23 root - INFO - Found columns: Index(['_id', '29', 'F', 'f', 'f.1', 'f.2', 'f.3', 'f.4', 'f.5', 'f.6', 't',
+       'f.7', 'f.8', 'f.9', 'f.10', 'f.11', 'f.12', 't.1', '0.3', 'f.13', '?',
+       'f.14', '?.1', 'f.15', '?.2', 'f.16', '?.3', 'f.17', '?.4', 'other',
+       '-[840801013]'],
+      dtype='object')
+[ 2023-02-15 17:46:42,744 ] 25 root - INFO - Dropping column: _id 
+[ 2023-02-15 17:46:42,755 ] 27 root - INFO - Row and columns in df: (18342, 30)
+[ 2023-02-15 17:46:42,755 ] 30 root - INFO - collected the data with no column name
+[ 2023-02-15 17:46:42,755 ] 33 root - INFO - column 'other' is of no use so just dropping it
+[ 2023-02-15 17:46:42,764 ] 36 root - INFO - adding column names
+[ 2023-02-15 17:46:42,765 ] 40 root - INFO - getting splitted val of Target column
+[ 2023-02-15 17:46:42,834 ] 50 root - INFO - dropping featuree that are not useful 
+[ 2023-02-15 17:46:42,844 ] 57 root - INFO - Saving df to dataset folder
+[ 2023-02-15 17:46:42,951 ] 87 root - INFO - Data ingestion artifact: DataIngestionArtifact(dataset_file_path='/config/workspace/artifact/02152023__174642/data_ingestion/dataset/thyroiddataset.csv')
